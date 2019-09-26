@@ -158,6 +158,7 @@ module FastlaneCore
         "-u #{username.shellescape}",
         "-p #{shell_escaped_password(password)}",
         "-f \"#{source}\"",
+        ENV["DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS"],
         "-k 100000",
         ("-WONoPause true" if Helper.windows?), # Windows only: process instantly returns instead of waiting for key press
         ("-itc_provider #{provider_short_name}" unless provider_short_name.to_s.empty?)
@@ -241,6 +242,7 @@ module FastlaneCore
         "-u #{username.shellescape}",
         "-p #{password.shellescape}",
         "-f #{source.shellescape}",
+        ENV["DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS"],
         '-k 100000',
         ("-itc_provider #{provider_short_name}" unless provider_short_name.to_s.empty?),
         '2>&1' # cause stderr to be written to stdout
